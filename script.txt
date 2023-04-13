@@ -1,0 +1,17 @@
+# Lista az összes csatlakoztatott lemezről
+$drives = Get-WmiObject Win32_LogicalDisk -Filter "DriveType = 2"
+
+# A Pendrive kiválasztása
+$usbDrive = $drives | Where-Object {$_.Description -like "*USB*" -and $_.MediaType -ne "CD-ROM"} | Select-Object -First 1
+
+# USB Nem található error
+if (!$usbDrive) {
+    Write-Host "USB drive not found" -ForegroundColor Red
+    Exit
+}
+
+# Útvonal kijelölése ahová a txt fájl kerülni fog
+$outputFile = "$usbDrive\ipconfig.txt"
+
+# Lefuttatja a parancsot és lementi a pendrive-ra
+ipconfig /all | Out-File $outputFile
