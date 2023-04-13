@@ -1,6 +1,8 @@
 # PowerShell-IPCofig-Copier
 
 This PS script will instatly copy the result of the "ipconfig /all" command to an external USB drive, that will be automatically detected, so you do not have to worry about the letter of the USB Drive.
+
+
 Step 1: You'll find the script in the txt files that you can download in the zip
 
 Step 2: Copy the txt file to your USB Drive.
